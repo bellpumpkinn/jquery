@@ -1,0 +1,42 @@
+<script src='https://code.jquery.com/jquery-3.6.0.js'></script>
+<script>
+    $(() => {
+        $('<div>').appendTo('hr') // $('<div>')' 하면 div가 생김.
+        // content (<'div'>)를 집어넣으면 생성됨.
+        $('<div>', {
+            html: '<p class="center">red</p>',
+            class:'red'
+        }).appendTo('hr')
+
+        //과제: 위 $() 파라미터를 하나로 줄여라.
+        $('<div class = "red"><p class="center">red</p></div>').appendTo('hr')
+    })
+</script>
+
+<style>
+    div {
+        background-color: orange;
+        width: 5rem;
+        height: 5rem;
+        border-radius: 2.5rem;
+    }
+    
+    hr {
+        border: .1rem solid;
+    }
+
+    .red {
+        background-color: red;
+        position: relative;
+    }
+
+    p.center {
+        position: absolute;
+        left: 1.7rem;
+        top: 0.7rem;
+        font-weight: bold;
+    }
+    </style>
+<!-- 여기에 div가 없는데 위에서 '<div>'해서 생김-->
+
+<hr>

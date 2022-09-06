@@ -1,0 +1,29 @@
+<script src='https://code.jquery.com/jquery-3.6.0.js'></script>
+<script>
+    $(() => {
+        $('li').each((i, e) => console.log(i,e)) 
+
+        /*
+        과제 : 콘솔에 아래처럼 나오게 해라.
+        0 'a'
+        1 'b'
+        2 'c'
+        */
+        
+        $('li').each((i, e) => console.log(i,e.id)) // <- 답
+
+        //유틸리티 each는 array를 대상으로
+        jQuery.each([1, 2, 3, 4], (i, e) => console.log(`[${i}]: `, e))
+
+        $.each($('li').toArray(), (i, e) => console.log(i, e))
+
+        $.each({name: 'adelia', age: 20}, (k, v) => console.log(k, ':', v))
+    })
+</script>
+
+<ul>
+    <li id='a'>A</li>
+    <li id='b'>B</li>
+    <li id='c'>C</li>
+</ul>
+

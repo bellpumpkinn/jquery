@@ -1,0 +1,10 @@
+<script>
+window.onerror = (msg, url, line, col, err) => {
+    document.write(`${msg}<br>`)
+    document.write(`at ${line}:${col} of ${url}`)
+    document.write('<hr>')
+    document.write(err) // 에러메시지가 화면에 나타남.
+} // 에러이벤트가 작동하면 화면에 띄우고싶을때 쓴다.
+
+a // ReferenceError: a is not defined.
+</script>

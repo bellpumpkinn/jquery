@@ -1,0 +1,34 @@
+<script src='https://code.jquery.com/jquery-3.6.0.js'></script>
+<script>
+    $(() => {
+        console.log($('h1').html()) // html에 있는 contents를 실행함.
+
+        $('footer').html('<mark>foot</mark>')
+        console.log($('footer').html())
+
+        console.log($('header').find('h1').eq(1).html())
+       $('header').find('h1').eq(1).html('<hr>') // hr(가로줄)로 바꿔줌.
+
+       $('ul').find('li').eq(2).html('index: 2').end()
+            .eq(3).html('index: 3').end()
+            .eq(4).html('index: 4')
+
+        $('h1').text('Hi')
+        console.log($('h1').text())
+    })
+</script>
+
+<header>
+    <h1><b>hello</b></h1>
+    <h1>world</h1>
+</header>
+
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+<footer></footer>

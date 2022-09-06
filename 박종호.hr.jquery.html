@@ -1,0 +1,163 @@
+
+<html>
+    <head>
+    <title>hr</title>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.js'></script>
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js'></script>
+    <script src='https://code.jquery.com/jquery-3.6.0.js'></script>
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'/>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.6.3/css/all.css'/>
+    <style>
+         
+    </style>
+    </head>
+
+    <script>
+        let empty = '<tr id="empty"><td colspan="4" class="text-center"> 노동자가 없습니다. </td></tr>'
+        let laborerId = 1
+        let dateCaution = '입사일을 입력해주세요.'
+        let nameCaution = '노동자명을 입력해주세요.'
+
+        $(() => {
+            if($('tbody').children().length == 0) $('tbody').append(empty)
+
+            $('#addLaborer').click(() => {
+                let name = $('input').eq(0).val()
+                let hireDate = $('input').eq(1).val()
+                if(name) {
+                    if(hireDate){
+                        let addTr = '<tr><td><input type="radio"/></td><td>' + `${laborerId++}` + '</td><td>' + name + '</td><td>'+ hireDate +'</td></tr>'
+                        $('tbody').prepend(addTr)
+                        $('#empty').remove()
+                    } else {
+                        $('#delLaborer').click()
+                        $('.modal-body').html(dateCaution)
+                        $('.modal-footer').children().hide()
+                    }
+                } else {
+                    $('#delLaborer').click()
+                    $('.modal-body').html(nameCaution)
+                    $('.modal-footer').children().hide()
+                }
+            })
+
+            $('#fixLaborer').click(() => {
+                let fixName = $('input').eq(0).val() 
+                let fixDate = $('input').eq(1).val()
+                if($(':checked').val()) {
+                    if(fixName) {
+                        if(fixDate) {
+                            $('tbody tr').has($(':checked')).children()[2].innerText= fixName
+                            $('tbody tr').has($(':checked')).children()[3].innerText= fixDate
+                            $('#nameBox').val('')
+                            $('#dateBox').val('')
+                        } else{
+                            $('#delLaborer').click()
+                            $('.modal-body').html(dateCaution)
+                            $('.modal-footer').children().hide()
+                        }
+                    } else {
+                        $('#delLaborer').click()
+                        $('.modal-body').html(nameCaution)
+                        $('.modal-footer').children().hide()
+                    }
+                } else {
+                    $('#delLaborer').click()
+                    $('.modal-body').html('수정할 노동자를 체크해주세요.')
+                    $('.modal-footer').children().hide()
+                }
+            })
+
+            $('#delLaborer').click(() => {
+                if($(':checked').val()){
+                    $('.modal-body').html('노동자를 삭제하시겠습니까?')
+                    $('.modal-footer').children().show()
+                    $('#nameBox').val('')
+                    $('#dateBox').val('')
+                } else {
+                    $('.modal-body').html('삭제할 노동자를 체크해주세요.')
+                    $('.modal-footer').children().hide()
+                }
+            })
+
+            $('#del-btn').click(() => {
+                $('tbody tr').has($(':checked')).remove();
+                if($('tbody').children().length == 0) $('tbody').append(empty)
+            })
+        })
+    </script>
+
+    <body>
+    <div class='container'>
+        <div class='row'>
+            <div class='col'>
+                <header class='jumbotron p-2'>
+                    <h1 class='text-center'>HR</h1>
+                </header>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col'>
+                <form>
+                    <div class='row mb-3'>
+                        <div class='col-2'>
+                            <input id ='nameBox' type='text' class='form-control' placeholder='노동자명'/>
+                        </div>
+                        <div class='col-4'>
+                            <input id= 'dateBox' type='date' class='form-control'/>
+                        </div>
+                        <div class='col'>
+                            <nav class='d-flex'>
+                                <button id='addLaborer' type='button' class='btn btn-success flex-fill mr-1'>
+                                    <i class='fas fa-plus'></i><span class='label d-none d-sm-inline'>추가</span>
+                                </button>
+                                <button id='fixLaborer' type='button' class='btn btn-info flex-fill mr-1'>
+                                    <i class='fas fa-edit'></i><span class='label d-none d-sm-inline'>수정</span>
+                                </button> 
+                                <button id='delLaborer' type='button' class='btn btn-warning flex-fill'
+                                    data-toggle='modal' data-target='#delLaborerModal'>
+                                    <i class='fas fa-trash-alt'></i><span class='label d-none d-sm-inline'>삭제</span>
+                                </button>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class='row'> 
+                        <div class='col mt-3'>
+                            <table class='table'>
+                                <thead>
+                                    <tr><th></th><th>ID</th><th>이름</th><th>입사일</th></tr>
+                                </thead>
+                                <tbody>
+                        
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> 
+    
+    <div class='modal fade' tabindex='-1' id='delLaborerModal'>
+        <div class='modal-dialog'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <button type='button' class='close' data-dismiss='modal'>
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class='modal-body'>
+                    
+                </div>
+                <div class='modal-footer'>
+                    <button type='button' class='btn btn-secondary' data-dismiss='modal'>아니오</button>
+                    <button id='del-btn' type='button' class='btn btn-primary' data-dismiss='modal'>예</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+    </html>

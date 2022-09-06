@@ -1,0 +1,25 @@
+<script src='https://code.jquery.com/jquery-3.6.0.js'></script>
+<script>
+//ready function을 줄여서 $()
+$(() => {
+    console.log($('a').attr('href')) //attr은 0번째원소의 어트리뷰트에 관심이 있다.
+    // a 요소의 href 속성의 값을 가져온다.
+
+    $('a').attr('href', 'https://www.daum.net/') // 모든원소의 href attribute속성값을 daum.net 으로 바꿈.
+    // a 요소의 href의 속성값을 daum으로  바꾼다.
+
+    $('a').attr({
+        href: 'https://jquery.com',
+        target: '_blank' //새로운 화면을 어디다가 띄워줄거냐? blank는 새창
+    })
+
+    $('a').removeAttr('target') // target을 지웠으니 새창으로 안열리고 그냥 열림.
+})
+</script>
+
+<a href='https://www.google.co.kr/'>google</a> <!-- https://www.google.co.kr/' 이런걸 어트리뷰트(속성)이라 함.-->
+<a href='https://www.naver.com/'>naver</a>
+
+<!--
+    attr()
+-->

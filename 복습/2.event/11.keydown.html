@@ -1,0 +1,14 @@
+<script src='https://code.jquery.com/jquery-3.6.0.js'></script>
+<script>
+    $(() => {
+        $(':password').keydown(e => { // 엔터키가 13번이라서 13
+            if(e.keycode == 13) $('form').submit()
+        })
+    })
+</script>
+
+<form>
+    <input type='text' name='id'/>
+    <input type='password' name='pw'/>
+    <input type='submit'/>
+</form>

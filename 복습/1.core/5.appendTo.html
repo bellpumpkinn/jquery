@@ -1,0 +1,26 @@
+<script src='https://code.jquery.com/jquery-3.6.0.js'></script>
+<script>
+    $(() => {
+        // $('div').appendTo($('hr')) // div를 hr안에 넣어라.
+        // 과제: 위를 append()로 refactoring 하라.
+        $('hr').append($('div')) // append를 하면 반대로 하면됨.
+    })
+</script>
+
+<style>
+    div {
+        background-color: orange;
+        width: 10rem;
+        height: 10rem;
+        border-radius: 5rem;
+    }
+
+    hr {
+        border: .1rem solid;
+    }
+</style>
+
+<div></div>
+<div></div>
+<hr>
+<hr>

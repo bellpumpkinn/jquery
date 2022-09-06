@@ -1,0 +1,30 @@
+<script src='https://code.jquery.com/jquery-3.6.0.js'></script>
+<script>
+    jQuery(document).ready(() => $('body').append('<p>one</p>')) //body type의 dom을 jQuery객체로 포장하고 append(<p>객체를만들어서 추가)
+                        //  ▼ Dom     append.(<tag> text <tag> = element) = 파라미터의 객체를 만듬
+    $(document).ready(() => $('body').append('<p>two<p>')) //<p> : p엘리먼트
+
+    let readyFn = () => $('body').append('<p>three</p>')
+    $(document).ready(readyFn)
+
+    $(() => $('body').append('<p>four</p>'))
+</script>
+<!--jquery를 사용하면 컬렉션이 리턴됨-->
+
+<!--
+
+** jquery 기본 문법
+
+$(선택자).동작함수();
+
+달러($) 기호는 제이쿼리를 의미하고, 제이쿼리에 접근할 수 있게 해주는 식별자.
+선택자를 이용하여 원하는 HTML 요소를 선택하고, 
+동작 함수를 정의하여 선택된 요소에 원하는 동작을 설정합니다.
+
+
+** $() 함수
+$() 함수는 선택된 HTML 요소를 제이쿼리에서 이용할 수 있는 형태로 생성해 주는 역할을 한다.
+$() 함수의 인수로는 HTML 태그 이름뿐만 아니라, 
+CSS 선택자를 전달하여 특정 HTML 요소를 선택할 수 있다.
+
+-->

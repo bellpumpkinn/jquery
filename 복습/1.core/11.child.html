@@ -1,0 +1,23 @@
+<script src='https://code.jquery.com/jquery-3.6.0.js'></script>
+<script>
+    $(() => {
+        console.log($('.1').children()) // 직계귀속만 찾고있음.
+        console.log($('.1').find('div')) // 말단까지 다 뒤짐.
+    })
+</script>
+
+<pre>
+    <div class = '1'>
+        <div class = '2-1'>
+            <div class='3'>
+                <div class = '4'></div>
+            </div>
+        </div>
+        <div class = '2-2'>
+
+        </div>
+        <div class = '2-3'>
+
+        </div>
+    </div>
+</pre>

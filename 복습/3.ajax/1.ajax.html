@@ -1,0 +1,51 @@
+<script src='https://code.jquery.com/jquery-3.6.0.js'></script>
+<script>
+    $(() => {
+        $('button').click(() => {
+            $.ajax({
+                url: '1.data.json',
+                data: {id: 'yellow'}, //request의 데이터타입 : text
+                type: 'get', //request의 타입.
+                dataType: 'json', // '01.data.json'의 타입은 'json' 여기까지 request
+                success: (data, status, xhr) => {  //여기부터 response 관련
+                    $('<h3>').text(data.userName).appendTo('body')
+                    $('<p>').html(status).appendTo('body')
+                    console.log(xhr)
+                },
+                error: (xhr, status) => {
+                    console.log('error: ', status)
+                    console.log(xhr)
+                },
+                complete: (xhr, status) => {
+                    console.log('complete: ', status)
+                }
+            })
+        })
+    })
+</script>
+
+<button type='button'>click</button>
+
+<!-- 
+    Ajax : Asynchrous Javascript Anx Xml
+
+    Ajax는 빠르게 동작하는 동적인 웹 페이지를 만들기 위한 개발 기법의 하나
+
+    Ajax는 웹 페이지 전체를 다시 로딩하지 않고도, 
+    웹 페이지의 일부분만을 갱신할 수 있게 해줍니다.
+
+    Ajax는 백그라운드 영역에서 서버와 데이터를 교환하여 
+    웹 페이지에 표시해 줍니다.
+-->
+
+<!--
+    ajax는 client에서 실행.
+    request - 클라이언트가 서버로 보내는 데이터의 집합.
+
+    request, response의 데이터타입 : text
+
+    synchrous는 친구랑 통화중에 잠깐만 기다려 하면
+    통화만 계속 기다리는거고
+    asynchrous는 잠깐만 기다려하면 티비도 보고 컴퓨터도하고 
+    그러다가 다시통화하면 통화하는거
+-->

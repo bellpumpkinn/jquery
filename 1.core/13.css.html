@@ -1,0 +1,22 @@
+<script src='https://code.jquery.com/jquery-3.6.0.js'></script>
+<script>
+    $(() => {
+        console.log($('h1').css('font-size'))
+        console.log($('h1.big').css('font-size', '3rem'))
+        $('h1.big').css({
+            'font-size': '4rem',
+            color: 'red'
+        })
+    })
+</script>
+
+<h1>HELLO</h1>
+<h1 class='big'>WORLD</h1>
+
+
+<!-- 
+    html의 속성 : attribute
+    css의 속성 : property
+
+    <h1>의 크기 : 32px. <-- 1rem의 2배(16px)
+-->
