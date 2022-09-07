@@ -110,7 +110,7 @@
             $('#laborers').on({ // 자식 on?
                 change() {
                     $('#laborerName').val($(this).parent().next().next().text()) // 노동자명
-                    $('#hireDate').val($(this).parent().next().siblings().eq(2).text()) // 입사일
+                    $('#hireDate').val($(this).parent().next().next().next().text()) // 입사일
                 }
             }, '#laborerId')
         }
